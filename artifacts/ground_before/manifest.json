@@ -1,0 +1,16 @@
+{
+  "images": [
+    "baseline.png",
+    "preset_1.png",
+    "no_caustics.png",
+    "cut_cushion.png",
+    "cut_emerald.png",
+    "cut_oval_cabochon.png",
+    "moonrainbow_cushion_day.png",
+    "soft_pearl_hero.png",
+    "soft_catseye_hero.png",
+    "opal_pear_day.png",
+    "black_opal_turn_000.png"
+  ],
+  "note": "Pre-caustic/shadow optimization, actual 256px GPU captures."
+}

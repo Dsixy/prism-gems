@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.json -text
+*.svg -text
+*.blend -text
+*.glb -text
+*.bin -text
+*.otf -text
+*.ttf -text
+*.png -text
+*.gif -text
+*.cmd text eol=crlf

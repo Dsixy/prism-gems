@@ -1,0 +1,189 @@
+{
+  "version": 2,
+  "cuts": [
+    {
+      "id": "round",
+      "name": "圆形明亮式",
+      "en": "ROUND",
+      "style": "明亮式",
+      "description": "放射状三角与风筝切面",
+      "sources": [
+        "gia_anatomy",
+        "gia_shapes"
+      ],
+      "model_path": "res://assets/gem/brilliant.glb",
+      "metadata_path": "res://assets/gem/brilliant.json",
+      "icon_path": "res://assets/gem/cuts/round.svg",
+      "facet_count": 74
+    },
+    {
+      "id": "oval",
+      "name": "椭圆形",
+      "en": "OVAL",
+      "style": "改良明亮式",
+      "description": "修长椭圆，连续弧形轮廓",
+      "sources": [
+        "gia_anatomy",
+        "gia_shapes"
+      ],
+      "model_path": "res://assets/gem/cuts/oval.glb",
+      "metadata_path": "res://assets/gem/cuts/oval.json",
+      "icon_path": "res://assets/gem/cuts/oval.svg",
+      "facet_count": 74
+    },
+    {
+      "id": "pear",
+      "name": "水滴形",
+      "en": "PEAR",
+      "style": "改良明亮式",
+      "description": "一端尖、一端圆润的水滴轮廓",
+      "sources": [
+        "gia_shapes"
+      ],
+      "model_path": "res://assets/gem/cuts/pear.glb",
+      "metadata_path": "res://assets/gem/cuts/pear.json",
+      "icon_path": "res://assets/gem/cuts/pear.svg",
+      "facet_count": 70
+    },
+    {
+      "id": "marquise",
+      "name": "马眼形",
+      "en": "MARQUISE",
+      "style": "改良明亮式",
+      "description": "两端尖、左右对称的舟形轮廓",
+      "sources": [
+        "gia_shapes"
+      ],
+      "model_path": "res://assets/gem/cuts/marquise.glb",
+      "metadata_path": "res://assets/gem/cuts/marquise.json",
+      "icon_path": "res://assets/gem/cuts/marquise.svg",
+      "facet_count": 71
+    },
+    {
+      "id": "princess",
+      "name": "公主方形",
+      "en": "PRINCESS",
+      "style": "方形明亮式",
+      "description": "尖角方形与交错的亭部切面",
+      "sources": [
+        "gia_shapes"
+      ],
+      "model_path": "res://assets/gem/cuts/princess.glb",
+      "metadata_path": "res://assets/gem/cuts/princess.json",
+      "icon_path": "res://assets/gem/cuts/princess.svg",
+      "facet_count": 50
+    },
+    {
+      "id": "emerald",
+      "name": "祖母绿阶梯",
+      "en": "EMERALD",
+      "style": "阶梯式",
+      "description": "切角长方形与平行阶梯切面",
+      "sources": [
+        "gia_shapes",
+        "gia_styles"
+      ],
+      "model_path": "res://assets/gem/cuts/emerald.glb",
+      "metadata_path": "res://assets/gem/cuts/emerald.json",
+      "icon_path": "res://assets/gem/cuts/emerald.svg",
+      "facet_count": 58
+    },
+    {
+      "id": "asscher",
+      "name": "阿斯切方阶梯",
+      "en": "ASSCHER",
+      "style": "阶梯式",
+      "description": "宽切角方形，较小台面与深阶梯",
+      "sources": [
+        "gia_shapes"
+      ],
+      "model_path": "res://assets/gem/cuts/asscher.glb",
+      "metadata_path": "res://assets/gem/cuts/asscher.json",
+      "icon_path": "res://assets/gem/cuts/asscher.svg",
+      "facet_count": 58
+    },
+    {
+      "id": "cushion",
+      "name": "枕形",
+      "en": "CUSHION",
+      "style": "改良明亮式",
+      "description": "圆润方角与饱满的弧边",
+      "sources": [
+        "gia_anatomy",
+        "gia_shapes"
+      ],
+      "model_path": "res://assets/gem/cuts/cushion.glb",
+      "metadata_path": "res://assets/gem/cuts/cushion.json",
+      "icon_path": "res://assets/gem/cuts/cushion.svg",
+      "facet_count": 74
+    },
+    {
+      "id": "trillion",
+      "name": "三角形",
+      "en": "TRILLION",
+      "style": "三角明亮式",
+      "description": "三角轮廓与三重对称的切面",
+      "sources": [
+        "gia_anatomy",
+        "gia_styles"
+      ],
+      "model_path": "res://assets/gem/cuts/trillion.glb",
+      "metadata_path": "res://assets/gem/cuts/trillion.json",
+      "icon_path": "res://assets/gem/cuts/trillion.svg",
+      "facet_count": 38
+    },
+    {
+      "id": "sphere",
+      "name": "圆珠",
+      "en": "SPHERE",
+      "style": "珠形",
+      "description": "光滑球面，适合珍珠光泽与晕彩",
+      "facet_count": 0,
+      "sources": [
+        "original_smooth_forms"
+      ],
+      "geometry_mode": 1,
+      "model_path": "res://assets/gem/cuts/sphere.glb",
+      "metadata_path": "res://assets/gem/cuts/sphere.json",
+      "icon_path": "res://assets/gem/cuts/sphere.svg"
+    },
+    {
+      "id": "oval_bead",
+      "name": "椭圆珠",
+      "en": "OVAL BEAD",
+      "style": "珠形",
+      "description": "完整椭球，可从各个角度观察圆润表面",
+      "facet_count": 0,
+      "sources": [
+        "original_smooth_forms"
+      ],
+      "geometry_mode": 1,
+      "model_path": "res://assets/gem/cuts/oval_bead.glb",
+      "metadata_path": "res://assets/gem/cuts/oval_bead.json",
+      "icon_path": "res://assets/gem/cuts/oval_bead.svg"
+    },
+    {
+      "id": "oval_cabochon",
+      "name": "椭圆弧面",
+      "en": "OVAL CABOCHON",
+      "style": "弧面",
+      "description": "平底高弧面，适合猫眼亮带、月光和欧泊",
+      "facet_count": 0,
+      "sources": [
+        "original_smooth_forms"
+      ],
+      "geometry_mode": 2,
+      "model_path": "res://assets/gem/cuts/oval_cabochon.glb",
+      "metadata_path": "res://assets/gem/cuts/oval_cabochon.json",
+      "icon_path": "res://assets/gem/cuts/oval_cabochon.svg"
+    }
+  ],
+  "sources": {
+    "gia_anatomy": "https://4cs.gia.edu/interactive-4cs/cut/anatomy.html",
+    "gia_shapes": "https://4cs.gia.edu/en-us/blog/guide-diamond-shapes-engagement-rings/",
+    "gia_styles": "https://hongkong.gia.edu/gia-website/gia-news-research-value-factors-gem-cutting-styles-definitions",
+    "original_smooth_forms": {
+      "title": "Original Blender ellipsoid and capped-ellipsoid models"
+    }
+  }
+}

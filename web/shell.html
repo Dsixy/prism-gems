@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="旋转、换色，观察宝石中的反射、火彩、彩虹月光与地面焦散。Blender + Godot 像素宝石实验室。">
+  <meta name="theme-color" content="#f6f6ef">
+  <title>PRISM · 像素宝石</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #f6f6ef; color: #203f36; }
+    body { font: 14px/1.5 system-ui, sans-serif; }
+    header, footer { max-width: 1280px; margin: auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .brand { font-size: 16px; letter-spacing: .28em; text-decoration: none; }
+    .subtitle { color: #7d8b80; margin-left: 16px; font-size: 12px; }
+    nav { display: flex; gap: 8px; }
+    a { color: inherit; }
+    nav a, button { font: inherit; background: transparent; color: #203f36; border: 1px solid #d9ded4; border-radius: 7px; padding: 7px 13px; text-decoration: none; cursor: pointer; }
+    nav a:hover, button:hover { background: #e6ece2; }
+    main { display: grid; place-items: center; padding: 0 12px; }
+    #frame { position: relative; width: 1280px; height: 860px; }
+    #canvas { width: 100%; height: 100%; display: block; outline: none; visibility: hidden; touch-action: none; }
+    #loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; background: #f6f6ef; padding: 24px; text-align: center; }
+    .mark { width: 44px; height: 44px; border: 1px solid #1e6553; transform: rotate(45deg); position: relative; }
+    .mark::before { content: ''; position: absolute; inset: 8px; border: 1px solid #a4b7a5; }
+    #message { color: #718375; white-space: pre-line; max-width: 580px; }
+    progress { width: min(320px, 70%); height: 5px; accent-color: #1e6553; }
+    footer { color: #7d8b80; font-size: 12px; padding-top: 10px; }
+    footer a { text-decoration-color: #c5cec1; }
+    @media(max-width: 650px) { header, footer { padding: 12px 16px; flex-wrap: wrap; } .subtitle { display: none; } nav { gap: 5px; } nav a, button { padding: 5px 8px; font-size: 12px; } }
+  </style>
+  $GODOT_HEAD_INCLUDE
+</head>
+<body>
+  <header>
+    <div><a class="brand" href="./">PRISM</a><span class="subtitle">光，藏在切面里。</span></div>
+    <nav aria-label="项目链接">
+      <a href="https://github.com/Dsixy/prism-gems" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Dsixy/prism-gems/releases/latest" target="_blank" rel="noopener">Windows 下载</a>
+      <button id="fullscreen" type="button">全屏试玩</button>
+    </nav>
+  </header>
+  <main>
+    <div id="frame">
+      <canvas id="canvas" width="1280" height="860" tabindex="0" aria-label="PRISM 像素宝石，可拖动旋转，使用左侧材质菜单与右上角切型菜单"></canvas>
+      <div id="loading" role="status" aria-live="polite">
+        <div class="mark" aria-hidden="true"></div>
+        <div id="message">正在加载像素宝石…</div>
+        <progress id="progress" max="1" value="0"></progress>
+        <noscript>请启用 JavaScript 后重新打开页面。</noscript>
+      </div>
+    </div>
+  </main>
+  <footer><span>拖动旋转 · 滚轮缩放 · 空格暂停 · L 换光 · [ ] 换型 · 桌面浏览器体验更佳</span><a href="licenses.html" target="_blank" rel="noopener">第三方许可</a></footer>
+  <script src="$GODOT_URL"></script>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const frame = document.getElementById('frame');
+    const message = document.getElementById('message');
+    const progress = document.getElementById('progress');
+    function fit() {
+      const header = document.querySelector('header').getBoundingClientRect().height;
+      const footer = document.querySelector('footer').getBoundingClientRect().height;
+      const scale = Math.min(1, (innerWidth - 24) / 1280, Math.max(180, innerHeight - header - footer - 8) / 860);
+      frame.style.width = `${1280 * scale}px`;
+      frame.style.height = `${860 * scale}px`;
+    }
+    addEventListener('resize', fit);
+    fit();
+    document.getElementById('fullscreen').onclick = async () => {
+      try { if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); canvas.focus(); }
+      catch { message.textContent = '当前浏览器未允许全屏，可继续在窗口中试玩。'; }
+    };
+    document.addEventListener('fullscreenchange', () => {
+      document.getElementById('fullscreen').textContent = document.fullscreenElement ? '退出全屏' : '全屏试玩';
+      fit();
+    });
+    addEventListener('prism-ready', () => {
+      document.getElementById('loading').hidden = true;
+      document.getElementById('loading').style.display = 'none';
+      canvas.style.visibility = 'visible';
+      document.documentElement.dataset.gameReady = 'true';
+      canvas.focus();
+    }, {once: true});
+    const config = $GODOT_CONFIG;
+    const engine = new Engine(config);
+    window.prismEngine = engine;
+    const missing = Engine.getMissingFeatures({threads: false});
+    if (missing.length) {
+      message.textContent = '浏览器缺少运行所需的 WebGL 2.0 / WebAssembly 支持。\n请使用开启硬件加速的 Chrome、Edge 或 Firefox。';
+      progress.hidden = true;
+    } else {
+      engine.startGame({canvas, onProgress: (loaded, total) => {
+        if (total) { progress.value = loaded / total; message.textContent = `正在加载像素宝石 · ${Math.round(loaded / total * 100)}%`; }
+      }}).then(() => {
+        if (!document.documentElement.dataset.gameReady) message.textContent = '正在准备宝石与着色器…';
+      }).catch(error => {
+        message.textContent = `加载失败：${error.message || error}\n请刷新页面重试。`;
+        progress.hidden = true;
+        document.documentElement.dataset.gameError = 'true';
+        console.error(error);
+      });
+    }
+  </script>
+</body>
+</html>

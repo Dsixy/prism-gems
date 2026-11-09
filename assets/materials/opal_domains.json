@@ -1,0 +1,10 @@
+{
+  "size": 128,
+  "format": "RGBA8, x-fastest, then y, then z",
+  "domains_per_axis": 8,
+  "seed": 73129,
+  "rgb": "domain normal encoded as normal * 0.5 + 0.5",
+  "alpha": "relative spacing; shader maps to 185-305 nm",
+  "order_format": "R8, same dimensions; smoothly fading domain boundaries",
+  "note": "Original procedural model, not a scan or a measured opal"
+}

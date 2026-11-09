@@ -1,0 +1,65 @@
+name: Build and deploy Web demo
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GODOT_VERSION: 4.6.1
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Cache Godot editor and Web template
+        id: godot-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          key: godot-web-4.6.1-linux-x64-v1
+          path: |
+            ~/.cache/prism-godot
+            ~/.local/share/godot/export_templates/4.6.1.stable
+      - name: Install Godot and single-threaded Web template
+        if: steps.godot-cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.cache/prism-godot" "$HOME/.local/share/godot/export_templates/4.6.1.stable"
+          base="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-stable"
+          curl --fail --location --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$HOME/.cache/prism-godot"
+          curl --fail --location --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz" -o "$RUNNER_TEMP/templates.tpz"
+          unzip -j -q "$RUNNER_TEMP/templates.tpz" templates/web_nothreads_release.zip -d "$HOME/.local/share/godot/export_templates/4.6.1.stable"
+          chmod +x "$HOME/.cache/prism-godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64"
+      - name: Import and export
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot="$HOME/.cache/prism-godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64"
+          mkdir -p build/web
+          "$godot" --headless --editor --path . --import
+          "$godot" --headless --path . --export-release Web build/web/index.html
+          python3 tools/prepare_web.py build/web
+      - name: Configure Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - name: Upload Web build
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: build/web
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

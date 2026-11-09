@@ -1,0 +1,252 @@
+{
+	"before": true,
+	"cuts": [
+		{
+			"bounds_max": [
+				0.75,
+				0.42,
+				1.08
+			],
+			"bounds_min": [
+				-0.75,
+				-0.690077,
+				-1.24
+			],
+			"cut": "pear",
+			"geometry": {
+				"facet_count": 70,
+				"geometry_mode": 0,
+				"imported_vertices_checked": 384,
+				"maximum_plane_error": 0.0000326037406921387,
+				"maximum_surface_error": 0.0,
+				"passed": true
+			},
+			"volume": 1.37910326534445
+		},
+		{
+			"bounds_max": [
+				0.795281,
+				0.42,
+				1.233705
+			],
+			"bounds_min": [
+				-0.795281,
+				-0.87,
+				-1.233705
+			],
+			"cut": "oval",
+			"geometry": {
+				"facet_count": 74,
+				"geometry_mode": 0,
+				"imported_vertices_checked": 336,
+				"maximum_plane_error": 0.0000331401824951172,
+				"maximum_surface_error": 0.0,
+				"passed": true
+			},
+			"volume": 1.90446362380814
+		}
+	],
+	"materials": [
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "uniform"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "uniform"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "bicolor"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "bicolor"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "ametrine"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "ametrine"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "watermelon"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "watermelon"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "alexandrite"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "alexandrite"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "opal"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "opal"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "pearl"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "pearl"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "catseye"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "catseye"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "moonstone"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "moonstone"
+		},
+		{
+			"cut": "pear",
+			"light": 0,
+			"material": "black_opal"
+		},
+		{
+			"cut": "pear",
+			"light": 1,
+			"material": "black_opal"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "uniform"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "uniform"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "bicolor"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "bicolor"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "ametrine"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "ametrine"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "watermelon"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "watermelon"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "alexandrite"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "alexandrite"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "opal"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "opal"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "pearl"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "pearl"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "catseye"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "catseye"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "moonstone"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "moonstone"
+		},
+		{
+			"cut": "oval",
+			"light": 0,
+			"material": "black_opal"
+		},
+		{
+			"cut": "oval",
+			"light": 1,
+			"material": "black_opal"
+		}
+	],
+	"passed": true
+}

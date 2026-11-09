@@ -1,0 +1,35 @@
+.godot/
+*.blend1
+*.blend2
+build/
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+.env
+.env.*
+
+# Runtime captures, browser profiles, and reference-site screenshots stay local.
+artifacts/*
+!artifacts/.gdignore
+!artifacts/black_opal_rotation.gif
+!artifacts/cutdetail_rotation.gif
+!artifacts/ground_rotation_lighting.gif
+!artifacts/material_comparison.png
+!artifacts/moonfire_before_after.png
+!artifacts/moonfire_rotation.gif
+!artifacts/moonrainbow_before_after.gif
+!artifacts/opal_rotation.gif
+!artifacts/soft_gems_lighting.gif
+!artifacts/interface_cutdetail.png
+!artifacts/cut_catalog.png
+!artifacts/cut_refinement_before/
+!artifacts/ground_before/
+!artifacts/moonrainbow_before/
+!artifacts/optimization_before/
+!artifacts/moonfire_before/
+
+# Local, logged-in reference-browser research is not part of the application.
+tools/review_reference.py
+tools/review_capture.gd
+tools/review_capture.gd.uid
